@@ -4,20 +4,20 @@ from curses_context import Curses_Context
 from keyboard import KEYS, Keyboard
 from scale import Scale
 
-# Start here
+
 def main(window):
 
-  # Create curses help functions
-  cc = Curses_Context(curses, window)
+    # Create curses help functions
+    cc = Curses_Context(curses, window)
 
-  # Define color pairs
-  cc.init_pair(KEYS.WHITE, curses.COLOR_BLACK, curses.COLOR_WHITE)
-  cc.init_pair(KEYS.BLACK, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    # Define color pairs
+    cc.init_pair(KEYS.WHITE, curses.COLOR_BLACK, curses.COLOR_WHITE)
+    cc.init_pair(KEYS.BLACK, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
-  s = Scale()
-  k = Keyboard(cc, s)
-  k.draw_keyboard(0, 0)
-  window.getkey()
+    s = Scale()
+    k = Keyboard(cc, s)
+    k.draw_keyboard(0, 0)
+    window.getkey()
 
-# Start curses in wrapper mode
+
 curses.wrapper(main)
