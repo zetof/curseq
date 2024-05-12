@@ -17,6 +17,7 @@ def main(window):
     s = Scale()
     k = Keyboard(cc, s)
     k.draw_keyboard(0, 0)
+    cc.log_to_screen(s.to_string())
     window.getkey()
 
 
