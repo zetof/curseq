@@ -68,8 +68,6 @@ class Scale:
         index = 0
         degrees = []
         while current - start < DEGREES.OCTAVE_STEP:
-            degrees.append(current)
-            index += 1
             shift = 0
             try:
                 current = start + shift + self.scale[index]
@@ -77,6 +75,8 @@ class Scale:
                 shift += DEGREES.OCTAVE_STEP
                 index = 0
                 current = start + shift + self.scale[index]
+            index += 1
+            degrees.append(current)
 
         return degrees
 
