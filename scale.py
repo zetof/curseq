@@ -3,7 +3,7 @@ class DEGREES(object):
     DEFAULT_TONALITY = "C"
     DEFAULT_SCALE = "MAJOR"
     DEFAULT_OCTAVE = 5
-    OCTAVESTEP = 12
+    OCTAVE_STEP = 12
     OCTAVE_MIN = 2
     OCTAVE_MAX = 8
     ACCIDENTALS = [1, 3, 6, 8, 10]
@@ -63,7 +63,22 @@ class Scale:
         self.octave = DEGREES.GET_OCTAVE(octave)
 
     def build_degrees(self):
-        return []
+        start = DEGREES.OCTAVE_STEP * self.octave
+        current = start
+        index = 0
+        degrees = []
+        while current - start < DEGREES.OCTAVE_STEP:
+            degrees.append(current)
+            index += 1
+            shift = 0
+            try:
+                current = start + shift + self.scale[index]
+            except IndexError:
+                shift += DEGREES.OCTAVE_STEP
+                index = 0
+                current = start + shift + self.scale[index]
+
+        return degrees
 
     def to_string(self):
         return "TONALITY: {} / SCALE: {} / OCTAVE: {} -> DEGREES: {}".format(
