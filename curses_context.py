@@ -14,5 +14,8 @@ class Curses_Context:
     def get_pair(self, index):
         return self.curses.color_pair(index)
 
+    def print_at(self, x, y, value, color=0):
+        self.window.addstr(y, x, value, self.get_pair(color))
+
     def log_to_screen(self, value):
         self.window.addstr(self.max_col, 0, value)

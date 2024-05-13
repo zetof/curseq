@@ -125,6 +125,18 @@ class Scale:
         self.octave = DEGREES.GET_OCTAVE(octave)
         self.degrees = self.build_degrees()
 
+    def get_tonality_name(self):
+        return self.tonality_name
+
+    def get_scale_name(self):
+        return self.scale_name
+
+    def get_octave(self):
+        return self.octave
+
+    def get_degrees(self):
+        return self.degrees
+
     def set_tonality(self, tonality):
         self.tonality = DEGREES.GET_TONALITY(tonality)
 
@@ -149,7 +161,6 @@ class Scale:
                 current = start + shift + self.scale[index]
             index += 1
             degrees.append(current)
-
         return degrees
 
     def to_string(self):
